@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const variantButtons = document.querySelectorAll('.variant-selector');
     const mediaItems = document.querySelectorAll('.product__media-item');
 
-    // Check if variant buttons and media items are found
-    if (!variantButtons.length || !mediaItems.length) {
-        console.error('Variant buttons or media items not found');
+    // Check if media items are found
+    if (!mediaItems.length) {
+        console.error('Media items not found');
         return;
     }
 
-    console.log('Variant Buttons Found:', variantButtons);
     console.log('Media Items Found:', mediaItems);
 
     // Function to update media based on selected color
@@ -28,17 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Attach event listeners to each variant button using 'click' for reliability
-    variantButtons.forEach(button => {
-        button.addEventListener('click', function() {
+    // Use event delegation to handle dynamically loaded content
+    document.body.addEventListener('change', function(event) {
+        // Check if the target of the event is a variant selector
+        if (event.target.matches('.variant-selector')) {
             const selectedVariant = document.querySelector('.variant-selector:checked');
+            console.log('Selected Variant:', selectedVariant);
             if (selectedVariant) {
-                console.log('Variant changed to:', selectedVariant.value);
                 updateMedia(selectedVariant.value);
             } else {
                 console.log('No variant is selected.');
             }
-        });
+        }
     });
 
     // Initialize media based on the currently selected radio button
