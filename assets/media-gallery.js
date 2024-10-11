@@ -115,17 +115,3 @@ if (!customElements.get('media-gallery')) {
     }
   );
 }
-
-// document.querySelectorAll('.variant-selector').forEach(function(selector) {
-//   selector.addEventListener('change', function() {
-//     let selectedColor = this.value;
-//     document.querySelectorAll('.product__media').forEach(function(image) {
-//       console.log(image.getAttribute('data-color'), selectedColor)
-//       if (image.getAttribute('data-color') === selectedColor) {
-//         image.style.display = 'block';
-//       } else {
-//         image.style.display = 'none';
-//       }
-//     });
-//   });
-// });

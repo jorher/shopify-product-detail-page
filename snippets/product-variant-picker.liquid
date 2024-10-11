@@ -27,7 +27,7 @@
           endif
         endif
       -%}
-      {%- if picker_type == 'swatch' -%}
+      {%- if option.name == "Color" -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option.name }}:
@@ -39,7 +39,7 @@
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type
+            picker_type: 'swatch'
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}

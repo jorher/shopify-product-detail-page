@@ -74,7 +74,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col">
       <div class="grid__item product__media-wrapper">
         {% render 'product-carousel-gallery', variant_images: variant_images %}
       </div>
@@ -723,6 +723,61 @@
     </script>
   </div>
 </product-info>
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    const variantButtons = document.querySelectorAll('.variant-selector');
+    const mediaItems = document.querySelectorAll('.product__media-item');
+
+    // Check if variant buttons and media items are found
+    if (!variantButtons.length || !mediaItems.length) {
+        console.error('Variant buttons or media items not found');
+        return;
+    }
+
+    console.log('Variant Buttons Found:', variantButtons);
+    console.log('Media Items Found:', mediaItems);
+
+    // Function to update media based on selected color
+    function updateMedia(selectedColor) {
+        console.log('Updating media for selected color:', selectedColor);
+
+        // Hide all media items first
+        mediaItems.forEach(item => {
+            item.style.display = 'none'; // Hide all items
+        });
+
+        // Show only the media item that matches the selected color
+        mediaItems.forEach(item => {
+            const mediaColor = item.getAttribute('data-color');
+            console.log('Media item color:', mediaColor);
+            item.style.display = mediaColor === selectedColor ? 'block' : 'none';
+        });
+    }
+
+    // Attach event listeners to each variant button using 'click' for reliability
+    variantButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedVariant = document.querySelector('.variant-selector:checked');
+            if (selectedVariant) {
+                console.log('Variant changed to:', selectedVariant.value);
+                updateMedia(selectedVariant.value);
+            } else {
+                console.log('No variant is selected.');
+            }
+        });
+    });
+
+    // Initialize media based on the currently selected radio button
+    const selectedRadio = document.querySelector('.variant-selector:checked');
+    if (selectedRadio) {
+        console.log('Initial selected radio:', selectedRadio.value);
+        updateMedia(selectedRadio.value);
+    } else {
+        console.log('No radio button is initially selected.');
+    }
+  });
+</script>
 
 {% schema %}
 {
