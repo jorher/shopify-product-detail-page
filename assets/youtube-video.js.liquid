@@ -1,0 +1,51 @@
+// Function to initialize the YouTube player
+function onYouTubeIframeAPIReady() {
+  const videoID = document.getElementById('YouTubeVideoPlayer').getAttribute('data-video-id');
+  // Create a new YouTube player
+  const player = new YT.Player('YouTubeVideoPlayer', {
+      height: '360', // Set the height of the video
+      width: '640',  // Set the width of the video
+      videoId: 'p4JSevznugs', // YouTube video ID
+      playerVars: {
+        mute: 1, // Mute the video
+        loop: 1, // Loop video
+        autoplay: 1, // Disable autoplay
+        controls: 0, // Enable player controls
+        rel: 0, // Do not show related videos at the end
+        playlist: 'p4JSevznugs', // YouTube video ID
+        disablekb: 1, // Disable keyboard controls
+        showinfo: 0, // Hide video title and other info (deprecated but still useful)
+        modestbranding: 1, // Hide the YouTube logo
+        iv_load_policy: 3,  // Hide video annotations
+        playsinline: 1, // Play inline on mobile devices
+        fs: 0 // Disable fullscreen button
+      },
+      events: {
+        onReady: onPlayerReady, // Callback for player ready
+        onStateChange: onPlayerStateChange // Callback for state changes
+      }
+  });
+}
+
+// Function to be called when the player is ready
+function onPlayerReady(event) {
+  console.log('Player is ready');
+  event.target.playVideo(); // Optionally start playing the video when ready
+}
+
+// Function to handle state changes of the player
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING) {
+    console.log('Video is playing');
+  } else if (event.data == YT.PlayerState.PAUSED) {
+    console.log('Video is paused');
+  }
+}
+
+// Load the YouTube IFrame API script dynamically if not already included
+if (!window.YT) {
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
