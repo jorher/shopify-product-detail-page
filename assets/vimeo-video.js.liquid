@@ -1,6 +1,7 @@
+const videoID = document.getElementById('VimeoVideoPlayer').getAttribute('data-video-id');
 // Options for the Vimeo player
 const options = {
-  id: 76979871, // Vimeo video ID
+  id: videoID, // Vimeo video ID
   width: 640,   // Set the width of the player
   loop: true,   // Enable looping
   autoplay: true, // Enable autoplay
