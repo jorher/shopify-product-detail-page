@@ -43,6 +43,7 @@
             {%- endif -%}
 
             {%- if section.settings.video_host == "Vimeo" -%}
+              <script src="https://player.vimeo.com/api/player.js" defer></script>
               <script src="{{ 'vimeo-video.js' | asset_url }}" defer="defer"></script>
               <div class="player-wrapper">
                 <div 
