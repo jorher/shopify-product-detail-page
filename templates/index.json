@@ -12,13 +12,6 @@
     "image_with_text_CVkeq7": {
       "type": "image-with-text",
       "blocks": {
-        "video_NLYewC": {
-          "type": "Video",
-          "settings": {
-            "video_id": "p4JSevznugs&ab",
-            "video_host": "YouTube"
-          }
-        },
         "heading_HWmiGp": {
           "type": "heading",
           "settings": {
@@ -43,12 +36,13 @@
         }
       },
       "block_order": [
-        "video_NLYewC",
         "heading_HWmiGp",
         "text_EBcAnR",
         "button_M3NXDj"
       ],
       "settings": {
+        "video_id": "p4JSevznugs&ab",
+        "video_host": "YouTube"
       }
     }
   },
