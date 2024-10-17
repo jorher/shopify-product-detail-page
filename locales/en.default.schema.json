@@ -1444,6 +1444,15 @@
             }
           }
         },
+        "video": {
+          "name": "Video",
+          "settings": {
+            "video": {
+              "label": "Video ID from YouTube or Vimeo",
+              "default": "p4JSevznugs&ab"
+            }
+          }
+        },
         "caption": {
           "name": "Caption",
           "settings": {
