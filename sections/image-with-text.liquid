@@ -31,7 +31,13 @@
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
           {% comment %} Video block {% endcomment %}
           {%- if section.settings.video_id != blank -%}
+            <div 
+              class="grid__item one-whole" 
+              data-video-id="{{ section.settings.video_id }}"
+              data-video-service="{{ section.settings.video_host }}"
+            >
 
+            </div>
           {%- endif -%}
           {% comment %} Ends Video block {% endcomment %}
         </div>
@@ -90,35 +96,30 @@
     "disabled_on": {
       "groups": ["header", "footer"]
     },
-    "blocks": [
+    "settings": [
       {
-        "type": "Video",
-        "name": "t:sections.image-with-text.blocks.video.name",
-        "limit": 1,
-        "settings": [
+        "type": "text",
+        "id": "video_id",
+        "label": "t:sections.image-with-text.blocks.video.settings.video.label"
+      },
+      {
+        "type": "select",
+        "id": "video_host",
+        "options": [
           {
-            "type": "text",
-            "id": "video_id",
-            "label": "t:sections.image-with-text.blocks.video.settings.video.label"
+            "value": "YouTube",
+            "label": "YouTube"
           },
           {
-            "type": "select",
-            "id": "video_host",
-            "options": [
-              {
-                "value": "YouTube",
-                "label": "YouTube"
-              },
-              {
-                "value": "Vimeo",
-                "label": "Vimeo"
-              }
-            ],
-            "default": "YouTube",
-            "label": "Choose your video stream service"
+            "value": "Vimeo",
+            "label": "Vimeo"
           }
-        ]
-      },
+        ],
+        "default": "YouTube",
+        "label": "Choose your video stream service"
+      }
+    ],
+    "blocks": [
       {
         "type": "heading",
         "name": "t:sections.image-with-text.blocks.heading.name",
