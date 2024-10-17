@@ -43,10 +43,13 @@
             {%- endif -%}
 
             {%- if section.settings.video_host == "Vimeo" -%}
-              <div 
-                id="VimeoVideoPlayer"
-                data-video-id="{{ section.settings.video_id }}"
-              >
+              <script src="{{ 'vimeo-video.js' | asset_url }}" defer="defer"></script>
+              <div class="player-wrapper">
+                <div 
+                  id="VimeoVideoPlayer"
+                  data-video-id="{{ section.settings.video_id }}"
+                >
+                </div>
               </div>
             {%- endif -%}
           {%- endif -%}

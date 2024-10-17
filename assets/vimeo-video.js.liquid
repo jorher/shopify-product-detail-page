@@ -1,0 +1,28 @@
+// Options for the Vimeo player
+const options = {
+  id: 76979871, // Vimeo video ID
+  width: 640,   // Set the width of the player
+  loop: true,   // Enable looping
+  autoplay: true, // Enable autoplay
+  muted: true,  // Mute the video for autoplay to work in most browsers
+  controls: false // Hide default controls
+};
+
+// Create a new Vimeo player instance
+const player = new Vimeo.Player('VimeoVideoPlayer', options);
+
+// Event listener for when the video is ready
+player.on('loaded', function() {
+  console.log('Vimeo player is ready');
+  player.play(); // Start playing the video
+});
+
+// Event listener for video playback
+player.on('play', function() {
+  console.log('Video is playing');
+});
+
+// Event listener for pause
+player.on('pause', function() {
+  console.log('Video is paused');
+});
